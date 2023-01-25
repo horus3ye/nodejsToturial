@@ -1,0 +1,78 @@
+<%- include('../partial/header'); %>
+
+<section class="cart container mt-2 my-3 py-5">
+    <div class="container mt-2">
+        <h4>Your Cart</h4>
+    </div>
+    <% if(!cart||(cart.length <= 0)) {%>
+        <div>
+            <p>You don't have any products yet</p>
+        </div>
+    <% } else {%>
+
+    <table class="pt-5">
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Sub Total</th>
+        </tr>
+
+        <% cart.forEach(function(item){ %>
+
+        <tr>
+            <td>
+                <div class="product-info">
+                    <img src="images/<%= item.image %>">
+                    <div>
+                        <p><%= item.name %></p>
+                        <% if (item.discount) { %>
+                        <small><span>$</span><%= item.discount %></small>
+                        <% } else { %>
+                        <small><span>$</span><%= item.price %></small>
+                        <%}%>
+                        <br>
+                        <form method="post" action="removeFromCart">
+                            <input type="hidden" name="id" value="<%= item.id %>">
+                            <input type="submit" name="remove" class="btn remove-btn" value="Remove">
+                        </form>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <form method="post" action="editQuan">
+                    <input type="hidden" name="id" value="<%= item.id %>">
+                    <input type="submit" value="-" class="btn edit-btn" name="quanminus">
+                    <input type="text" name="quantity" class="text" value="<%= item.quantity %>" readonly>
+                    <input type="submit" value="+" data-id="<%= item.id  %>" class="btn edit-btn" name="quanplus">
+                </form>
+            </td>
+            <td>
+                <% if (item.discount) { %>
+                <span class="product-price" id="<%= item.id %>-price">$ <%= item.discount * item.quantity %></span>
+                <% } else { %>
+                <span class="product-price" id="<%= item.id %>-price">$ <%= item.price * item.quantity %></span>
+                <%}%>
+            </td>
+        </tr>
+        <%})%>
+    </table>
+    
+    <div class="cart-total">
+        <table>
+            <tr>
+                <td>Total</td>
+                <td>$ <%= total %></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="checkout-container">
+        <form action="/checkout" method="get">
+            <input type="submit" class="btn checkout-btn" name="" value="Checkout">
+        </form>
+    </div>
+    <% }%>
+</section>
+
+
+<%- include('../partial/footer') %>
