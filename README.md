@@ -1,22 +1,20 @@
-_  _ ____ ___  ____  _ ____ ___ ____ ___ _  _ ____ _ ____ _    
-|\ | |  | |  \ |___  | [__   |  |  |  |  |  | |__/ | |__| |    
-| \| |__| |__/ |___ _| ___]  |  |__|  |  |__| |  \ | |  | |___ 
+_  _ ____ ___  ____  _ ____ 
+|\ | |  | |  \ |___  | [__  
+| \| |__| |__/ |___ _| ___] 
                                                                
+___ ____ ___ _  _ ____ _ ____ _    
+ |  |  |  |  |  | |__/ | |__| |    
+ |  |__|  |  |__| |  \ | |  | |___ 
+ 
+ 
+ 
 # nodejsToturial
 
 This is a nodejs project 
 to make it work you should download nodjs
 and use those commands
 
-- npm init
-
-- npm i express
-
-- npm i express-session
-
-- npm i mysql
-
-- npm i body-parser
+- npm install
 
 after that using mysql database
 
